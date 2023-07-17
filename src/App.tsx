@@ -1,22 +1,24 @@
-function App() {
+import React from 'react';
+import { Grid } from "./Grid";
+import { Widget } from "./Widget";
+
+export function App() {
   return (
     <div className="App" role="main">
-      <article className="App-article">
-        <img src={"/bunlogo.svg"} className="App-logo" alt="logo" />
-        <div style={{ height: "30px" }}></div>
-        <h3>Welcome to Bun!</h3>
-        <div style={{ height: "10px" }}></div>
-        <a
-          className="App-link"
-          href="https://bun.sh/docs"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Read the docs →
-        </a>
-      </article>
+      <Grid
+        renderers={[
+          (props) => (
+            <Widget key={`1-${props.collapsed}`} {...props}>
+              1
+            </Widget>
+          ),
+          (props) => (
+            <Widget key={`2-${props.collapsed}`} {...props}>
+              2
+            </Widget>
+          ),
+        ]}
+      />
     </div>
   );
 }
-
-export default App;
